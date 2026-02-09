@@ -3,8 +3,38 @@
 ## Workflow in One Line
 > **Dataset → SQL ETL → Feature Engineering → ML Risk Prediction → Autonomous Decision Logic → Action Execution (Slack) → Power BI Oversight → Docker/K8s → AWS → CI/CD**
 
+
 ## Overview
 This project implements an Autonomous Decision Intelligence Engine that leverages multi-agent AI to optimize enterprise operations. The system ingests data, assesses risks using Machine Learning, makes autonomous decisions based on business logic, executes actions (e.g., Slack notifications), and provides oversight through Power BI dashboards. It is designed to be enterprise-ready with containerization and automated CI/CD pipelines.
+
+## Architecture Diagram
+
+```mermaid
+graph TD
+    %% collaborative flow
+    subgraph "Data Layer"
+        Dataset[DataCo SMART Supply Chain Dataset] -->|ETL| SQL[(MySQL Database)]
+        SQL -->|Raw Data| FE[Feature Engineering]
+    end
+
+    subgraph "Intelligence Layer"
+        FE -->|Features| ML[ML Risk Prediction Agent]
+        ML -->|Probabilities| DL[Decision Logic Agent]
+        DL -->|Actionable Logic| AE[Action Execution Agent]
+    end
+
+    subgraph "Action & Oversight Layer"
+        AE -->|Notifications| Slack[Slack Integration]
+        SQL -->|Live Data| PBI[Power BI Dashboard]
+    end
+
+    subgraph "Infrastructure & DevOps"
+        Repo[GitHub Repository] -->|Trigger| CI[CI/CD Pipeline]
+        CI -->|Build & Test| Docker[Docker Containers]
+        Docker -->|Deploy| K8s[Kubernetes / AWS]
+    end
+```
+
 
 ## Project Phases
 
